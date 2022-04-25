@@ -36,12 +36,16 @@ public class StackedSubCommandExample {
             }
         };
 
+        // Register the containerCommand to the manager
         manager.registerTopCommand(containerCommand);
 
+        // Register the subContainerCommand to the containerCommand as a child
         containerCommand.addSubCommand(subContainerCommand);
 
+        // Register the finalCommand to the subContainerCommand as a child
         subContainerCommand.addSubCommand(finalCommand);
 
+        // Register the commandManager as an eventListener
         jda.addEventListener(manager);
     }
 }
