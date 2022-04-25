@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class ContainerCommand extends Command {
+public class ContainerCommand extends Command {
 
     protected Character delimiter;
 
@@ -23,7 +23,15 @@ public abstract class ContainerCommand extends Command {
 
     @Override
     public void onTrigger(String[] args, MessageReceivedEvent event) {
-        // TODO: 4/24/2022 print usages of sub commands
+        // print usages of sub commands
+
+        for (Command c : childCommands) {
+            if (c instanceof SubCommand sc) {
+                if (!sc.getUsage().isEmpty()) {
+                    sendMessage(sc.getUsage(), event);
+                }
+            }
+        }
 
     }
 
