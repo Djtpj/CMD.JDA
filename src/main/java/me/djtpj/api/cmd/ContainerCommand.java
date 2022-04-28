@@ -27,7 +27,7 @@ public class ContainerCommand extends Command {
 
         for (Command c : childCommands) {
             if (c instanceof SubCommand sc) {
-                if (!sc.getUsage().isEmpty()) {
+                if (sc.getUsage() != null && !sc.getUsage().isEmpty()) {
                     sendMessage(sc.getUsage(), event);
                 }
             }

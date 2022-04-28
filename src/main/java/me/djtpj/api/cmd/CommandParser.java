@@ -32,11 +32,13 @@ public class CommandParser {
     public static String[] trimToIndex(int index, String... args) {
         ArrayList<String> trimmed = new ArrayList<>(Arrays.asList(args));
 
-        for (String s : args) {
-            if (Arrays.asList(args).indexOf(s) < index) {
-                trimmed.remove(s);
-            }
-        }
+//        for (String s : args) {
+//            if (Arrays.asList(args).indexOf(s) <= index - 1) {
+//                trimmed.remove(s);
+//            }
+//        }
+
+        trimmed = new ArrayList<>(trimmed.subList(index, trimmed.size()));
 
         return trimmed.toArray(new String[trimmed.size()]);
     }

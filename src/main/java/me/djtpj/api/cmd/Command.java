@@ -36,8 +36,8 @@ public abstract class Command {
 
     private void validate(String[] args, MessageReceivedEvent event) {
         if (!Arrays.asList(args).isEmpty()) {
-            if (Arrays.asList(triggers).contains(args[0].toLowerCase())) {
-                onTrigger(CommandParser.trimToIndex(getIndex(), args), event);
+            if (Arrays.asList(triggers).contains(args[index].toLowerCase())) {
+                onTrigger(CommandParser.trimToIndex(getIndex() + 1, args), event);
             }
         }
     }
@@ -60,8 +60,8 @@ public abstract class Command {
 
         if (!sent) {
             if (args.length >= 1) {
-                String[] trimmed = CommandParser.trimToIndex(getIndex(), args);
-                validate(trimmed, event);
+//                String[] trimmed = CommandParser.trimToIndex(getIndex(), args);
+                validate(args, event);
             }
         }
     }
